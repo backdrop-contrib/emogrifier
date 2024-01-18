@@ -94,7 +94,7 @@ function _emogrifier_available() {
     return TRUE;
   }
 
-  include_once DRUPAL_ROOT . '/libraries/emogrifier/Classes/Emogrifier.php';
+  include_once BACKDROP_ROOT . '/modules/contrib/emogrifier/libraries/emogrifier/Classes/Emogrifier.php';
   return class_exists('\Pelago\Emogrifier');
 }
 
