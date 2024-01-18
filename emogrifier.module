@@ -12,17 +12,17 @@
 /**
  * Implements hook_help().
  */
-function emogrifier_help($path = 'admin/help#emogrifier', $arg) {
+function emogrifier_help($path, $arg) {
   switch ($path) {
     case 'admin/help#emogrifier':
       return '<p>'
         . t('The <a href="!module">%emogrifier</a> module uses the <a href="!class">%emogrifier</a> class library to convert stylesheet rules to inline style attributes. This ensures proper display on email and mobile device readers that lack stylesheet support.',
-        array(
-          '!module' => url('http://drupal.org/project/emogrifier'),
-          '%emogrifier' => 'emogrifier',
-          '!class' => url('http://www.pelagodesign.com/sidecar/emogrifier/'),
-        )
-      ) . '</p>';
+          array(
+            '!module' => url('http://drupal.org/project/emogrifier'),
+            '%emogrifier' => 'emogrifier',
+            '!class' => url('http://www.pelagodesign.com/sidecar/emogrifier/'),
+          )
+        ) . '</p>';
       break;
   }
 }
@@ -50,6 +50,7 @@ function _emogrifier_process($text, $filter, $format, $langcode, $cache, $cache_
   if (empty($text)) {
     return '';
   }
+
   // Avoid PHP fatal errors when the 'dom' extension is not loaded.
   if (!extension_loaded('dom')) {
     watchdog(
@@ -65,12 +66,13 @@ function _emogrifier_process($text, $filter, $format, $langcode, $cache, $cache_
     );
     return $text;
   }
+
   if (!_emogrifier_available()) {
     watchdog(
       'emogrifier',
       'The <a href="!library">%emogrifier</a> class library required by the <a href="!module">%emogrifier</a> module could not be loaded.',
       array(
-        '!library' => url('http://www.pelagodesign.com/sidecar/emogrifier/'),
+        '!library' => url('libraries/emogrifier/Classes/Emogrifier.php', array('absolute' => TRUE)),
         '%emogrifier' => 'emogrifier',
         '!module' => url('http://drupal.org/project/emogrifier'),
       ),
@@ -78,6 +80,7 @@ function _emogrifier_process($text, $filter, $format, $langcode, $cache, $cache_
     );
     return $text;
   }
+
   $emogrifier = new \Pelago\Emogrifier($text);
   return @$emogrifier->emogrify();
 }
@@ -90,7 +93,8 @@ function _emogrifier_available() {
   if (class_exists('\Pelago\Emogrifier')) {
     return TRUE;
   }
-  @include_once libraries_get_path('emogrifier') . '/Classes/Emogrifier.php';
+
+  include_once DRUPAL_ROOT . '/libraries/emogrifier/Classes/Emogrifier.php';
   return class_exists('\Pelago\Emogrifier');
 }
 
