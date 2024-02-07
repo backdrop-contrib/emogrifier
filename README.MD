@@ -45,7 +45,7 @@ Credits
 - Originally written for Drupal by [Robert Vincent (pillarsdotnet)](https://www.drupal.org/u/pillarsdotnet).
 - Based on [Emogrifier](https://www.drupal.org/project/emogrifier).
 
-License <!-- This section is required. -->
+License
 -------
 
 This project is GPL v2 software.
