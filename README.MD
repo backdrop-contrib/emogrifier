@@ -40,9 +40,12 @@ Current Maintainers
 Credits
 -------
 
-- Ported to Backdrop CMS by [Giant Rabbit](https://github.com/giant-rabbit).
+- Ported to Backdrop CMS by [Lauren Blais](https://github.com/rlblais),[Giant Rabbit](https://github.com/giant-rabbit).
 - Porting to Backdrop CMS development sponsored by [USENIX](https://www.usenix.org/).
-- Originally written for Drupal by [Robert Vincent (pillarsdotnet)](https://www.drupal.org/u/pillarsdotnet).
+- Originally written for Drupal and co-maintained by [Robert Vincent (pillarsdotnet)](https://www.drupal.org/u/pillarsdotnet).
+- Drupal 7 version co-maintained by:
+  - [monstrfolk](https://www.drupal.org/u/monstrfolk)
+  - [Niels de Feyter (ndf)](https://www.drupal.org/u/ndf)
 - Based on [Emogrifier](https://www.drupal.org/project/emogrifier).
 
 License
