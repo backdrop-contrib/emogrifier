@@ -10,24 +10,6 @@
  */
 
 /**
- * Implements hook_help().
- */
-function emogrifier_help($path, $arg) {
-  switch ($path) {
-    case 'admin/help#emogrifier':
-      return '<p>'
-        . t('The <a href="!module">%emogrifier</a> module uses the <a href="!class">%emogrifier</a> class library to convert stylesheet rules to inline style attributes. This ensures proper display on email and mobile device readers that lack stylesheet support.',
-          array(
-            '!module' => url('http://drupal.org/project/emogrifier'),
-            '%emogrifier' => 'emogrifier',
-            '!class' => url('http://www.pelagodesign.com/sidecar/emogrifier/'),
-          )
-        ) . '</p>';
-      break;
-  }
-}
-
-/**
  * Implements hook_filter_info().
  */
 function emogrifier_filter_info() {
@@ -94,7 +76,7 @@ function _emogrifier_available() {
     return TRUE;
   }
 
-  include_once BACKDROP_ROOT . '/modules/contrib/emogrifier/libraries/emogrifier/Classes/Emogrifier.php';
+  include_once backdrop_get_path('module', 'emogrifier') . '/libraries/emogrifier/Classes/Emogrifier.php';
   return class_exists('\Pelago\Emogrifier');
 }
 
